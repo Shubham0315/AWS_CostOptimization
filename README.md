@@ -79,7 +79,10 @@ _*This is how we can manage Cost optimization in our organization as DevOps and 
 <img width="607" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/48d93d44-f524-401c-99a0-8cf7a4adbcc2">
 
 
+# Integrate with CloudWatch
 
+- Lambda functions are event driven in nature, but here we were running them manually.
+- Go to cloudwatch to invoke the function. Select events and rules. Create rule and schedule it to everyday to run script without manual intervention
 
 
 
