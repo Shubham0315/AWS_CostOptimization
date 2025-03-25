@@ -99,14 +99,47 @@ Solution Implementation
 - Default execution time for lambda is 3 sec. Its better to keep this minimal as AWS will charge us for parameter.
 
 
-4. Now to add permissions for the IAM role, go to IAM policies and create custom policies.
+4. Grant Permissions
+-
+  - For one service talking to other service we need an IAM role and required permissions.
+  - To give our role a permission, click on Configurations - Permissions - Role in lambda
 
-- The custom policies need to be such that they have least privileges to any AWS service.
-- Create policy and select EC2. In actions allowed select "describe snapshot" and "delete snapshot" as we want to list and delete snapshots.
+  ![image](https://github.com/user-attachments/assets/91338c34-3bfc-4792-8528-d3e01d7d8e84)
 
-<img width="606" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/aab621ee-fe44-4b0d-8df8-161001513b0f">
+  - Now to add permissions for the IAM role, go to IAM policies and create custom policies.
+  - Add "DescribeSnapshots" and "DeleteSnapshots" permissions to it - Attach policies
 
-- Also create "describe volume" and "describe ec2" and then attach both to our role.
+![image](https://github.com/user-attachments/assets/2cd49674-e3e2-4334-a71b-c95d4d903221)
+
+  - Here we dont see snapshots permissions in list. So create custom policies
+
+![image](https://github.com/user-attachments/assets/e7d4e838-fa2e-4395-bcb8-5ba0b3118b1b)
+
+  - Go to policies - Create policy - Select service as "EC2" - Filter actions - Resources as "All" - Provide policy name - Create policy
+
+![image](https://github.com/user-attachments/assets/dc0f81b2-db84-491a-851a-c904e3100a12)
+![image](https://github.com/user-attachments/assets/a8c2899e-f1c3-46d4-913f-fe10e6e98b8b)
+![image](https://github.com/user-attachments/assets/715c69d8-3296-4ead-8f68-9bca396a72c0)
+
+  - Now go to role and attach this policy to it
+  - Add permissions - Attach policy
+
+![image](https://github.com/user-attachments/assets/01444297-232e-471c-8f87-4fdb1c516e42)
+![image](https://github.com/user-attachments/assets/2b04ad9b-805a-4bb6-9b88-27d33dd39e33)
+
+  - Now try to execute the role. Ideally it should not delete anything
+
+  - As snapshot belong to volume which is for EC2 instances. So create "describe volume" and "describe ec2" and then attach both to our role.
+
+![image](https://github.com/user-attachments/assets/f582c0ed-5020-4486-9a95-9260c81e4039)
+![image](https://github.com/user-attachments/assets/0a0e19de-8dbe-4267-8ec5-86a1ad1bf72d)
+![image](https://github.com/user-attachments/assets/2c7b9068-c3b1-4094-82d4-606be9a24081)
+
+  - Now go to role and attach this policy
+
+![image](https://github.com/user-attachments/assets/1b0c0465-68bb-4f1e-a2d7-3c05019269e1)
+![image](https://github.com/user-attachments/assets/bbc91000-c0b5-4fc5-bf83-e7b5ea2ae54d)
+
 
 5. Now when we test the script, it gets executed but doesn't delete any snapshot.
 
