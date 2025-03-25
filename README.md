@@ -21,13 +21,14 @@
 
 # How devops engineers can implement cost optimization by deleting stale resources?
 
-- Here DevOps engineer will use lambda function and write python code which will talk to AWS APIs.
-- We'll write lambda function for EBS snapshots. Python code we've written will talk to AWS API and it will get all info about EBS snapshot if they are in use or stale and any volume is actually using that snapshot. We can delete the snapshots using same lambda function.
-- As lambda functions are event driven, we can trigger them using cloudwatch.
+- Here DevOps engineer will use lambda function and write python code using BOTO3 module which will talk to AWS APIs.
+- We need to write these lambda functions for individual resources.
+- Here, we'll write lambda function for EBS snapshots. Python code we've written will talk to AWS API and it will get all info about EBS snapshot if they are in use or stale and any volume is actually using that snapshot or volume is deleted or attached to EC2. We can delete the snapshots using same lambda function.
+- As lambda functions are event driven, we can trigger them using AWS cloudwatch.
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
-# Problem statement :- There are some EBS volume snapshots. Dev has created EC2 for which he uses volume (inbuilt). For the volume he has created multiple snapshots (Snapshot is simply copy of the image). Later dev has deleted the EC2 whereas volume and snapshots are not deleted.
+# Problem statement :- There are some EBS volume snapshots. Dev has created EC2 for which he uses volume (inbuilt which comes with EC2). For the volume dev has created multiple snapshots (Snapshot is simply copy of the image). Later dev has deleted the EC2 whereas volume and snapshots are not deleted. Here if EC2 or volume gets deleted, snapshots are of no use.
 
 Solution approach Steps :-
 
