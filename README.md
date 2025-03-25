@@ -69,7 +69,8 @@ Solution Implementation
 ![image](https://github.com/user-attachments/assets/87633789-4c6f-4fdf-a9e4-6d3de5bb37e6)
 ![image](https://github.com/user-attachments/assets/60b7c02f-478a-4a02-ac4f-da9e61baa18e)
 
-*_Now after sometime, anyone want to delete EC2, volume and snapshot. While deleting instance, volume got deleted but he forgot to delete volume. In such case he will use lambda function_*
+  - Now after sometime, anyone want to delete EC2, volume and snapshot. While deleting instance, volume got deleted but he forgot to delete volume. In such case he will use lambda function
+  - Here our EC2 instance has volume attached to it and it takes snapshot
 
 3. Go to lambda function and create one. Go to source code and add code. Click deploy and then test. This will fail as by default lambda function as the role doesn't have permission to describe the snapshot.
 
