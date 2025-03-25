@@ -72,16 +72,31 @@ Solution Implementation
   - Now after sometime, anyone want to delete EC2, volume and snapshot. While deleting instance, volume got deleted but he forgot to delete volume. In such case he will use lambda function
   - Here our EC2 instance has volume attached to it and it takes snapshot
 
-3. Go to lambda function and create one. Go to source code and add code. Click deploy and then test. This will fail as by default lambda function as the role doesn't have permission to describe the snapshot.
+3. Create Lambda Function
+-
+  - Go to lambda function and create one providing existing permissions. 
 
-<img width="628" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/df852a7b-fbc4-44d7-abfb-3db5b3a618cd">
+![image](https://github.com/user-attachments/assets/11eb9c6a-9ba1-4cf1-89a2-ec30bd421929)
 
-<img width="603" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/abce9c21-702b-4a55-8ee1-12a35473cf24">
+  - Go to source code and add code.  This will fail as by default lambda function as the role doesn't have permission to describe the snapshot.
+![image](https://github.com/user-attachments/assets/128619eb-b864-4fbe-9e30-7917cf380410)
 
-<img width="586" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/41c7ed66-6847-43c4-99f9-632cf00492af">
+  - Click deploy and then test. In test just give name and save
 
-- Now go to configuration tab of lambda function and edit execution time to 10 sec
-- Default execution time for lambda is 3 sec. Its better to keep this minimal as AWS will charge us for parameter
+![image](https://github.com/user-attachments/assets/7225d40c-3042-408a-b483-c3d5a35e7a9b)
+![image](https://github.com/user-attachments/assets/cfe240ef-d9a2-4a34-83e3-23f67761883f)
+
+  - If we see in execution results, it will fail as by default lambda function execution is only of 3 seconds.
+
+![image](https://github.com/user-attachments/assets/9598339c-e9a7-43f4-9ca7-dfd6d1d2b038)
+
+
+  - Now go to configuration tab of lambda function and edit execution time to 10 sec and save.
+
+![image](https://github.com/user-attachments/assets/baa40f13-4ccf-4700-b665-09d6ce47b897)
+![image](https://github.com/user-attachments/assets/185fb80d-8c64-442a-8f3e-debe458e467d)
+
+- Default execution time for lambda is 3 sec. Its better to keep this minimal as AWS will charge us for parameter.
 
 
 4. Now to add permissions for the IAM role, go to IAM policies and create custom policies.
