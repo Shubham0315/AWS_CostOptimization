@@ -35,6 +35,13 @@ Solution approach Steps :-
 1. Fetch all EBS snapshots 
 2. Filter out snapshots that are stale and delete
 
+-------------------------------------------------------------------------------------------------------------------------------------
+
+- What if we've intentionally created snapshots deleting EC2 and volumes. But the snapshots are just for backup purpose.
+- Here also we can verify the timestamp of creation of timestamp. If the snapshot is way older, we can delete it
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
 # Solution Implementation
 
 1. Create EC2 and create snapshot from volume of that EC2. While creating EC2, in section "Configure storage" we can see volume is attached by default. So with instance comes the volume. If want to check volume inside EC2, go to “Storage” section.
