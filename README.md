@@ -164,14 +164,40 @@ This is how we can manage Cost optimization in our organization as DevOps and cl
 <img width="607" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/48d93d44-f524-401c-99a0-8cf7a4adbcc2">
 
 
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Code Explanation
+-
+
+![image](https://github.com/user-attachments/assets/2cfd5a2f-6182-4859-bc4f-c462c499e12f)
+
+- Here we've used BOTO3 module
+- In the lambda code, we've to list all snapshots, volumes and EC2. Then we need to verify the snapshot belonging to a volume of existing EC2.
+- To write simple one liner codes we can make use of boto3 documentation for AWS services
+- If we've to describe EC2, we can check the same there and get code
+
+![image](https://github.com/user-attachments/assets/3956e394-dc1b-48aa-87cb-727ee8156089)
+
+- First we've created boto3 client using which we talk to EC2 API to get all EC2 snapshots
+- Then we get instance ID.
+
+![image](https://github.com/user-attachments/assets/9dcdc5fe-f705-4a74-8445-f36e6d133a4b)
+
+- To just get instance ID, not all the JSON, we can use for loop.
+
+![image](https://github.com/user-attachments/assets/1f7a218a-8d22-44a0-84c9-defaf8fcdfb0)
+
+- Similar we can do for snapshots and volumes
+
+- Once we get snapshots info we check if that snap has volume ID or not. If not we delete it
+  - If it has volume ID then we check if volume exist. If not exist, we're deleting snapshot using try-except
+ 
+![image](https://github.com/user-attachments/assets/ff107d58-b740-4107-925d-d821ca0137d5)
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
 # Integrate with CloudWatch
 
 - Lambda functions are event driven in nature, but here we were running them manually.
 - Go to cloudwatch to invoke the function. Select events and rules. Create rule and schedule it to everyday to run script without manual intervention
-
-
-
-
-
-
 
