@@ -1,14 +1,23 @@
 # AWS_CostOptimization
 
-- Most devops engineers use Cost Optimization on day to day basis. This is as to reduce overhead of infrastructure and optimize infrastructure cost. This is for Startup or midscale organizations as they don't need dedicated person to monitor.
-- As a devops engineer in startup, instead of building on premises data centers, move towards cloud platform. This is good as long as we manage the resources efficiently on cloud.
+- Most devops engineers use Cost Optimization on day to day basis so as to reduce overhead of infrastructure and optimize infrastructure cost which are primary goals to move into cloud.
+- This is for Startup or midscale organizations as they don't need dedicated person to monitor.
+- As a devops engineer in startup, instead of building on premises data centers, we can onboard towards cloud platform. So instead of building data centres and everything, we can move to cloud. But this is good as long as we manage the resources efficiently on cloud as cost aspect comes in picture. Setting up infra by own, paying resources for the work, is big challenge for startups. So easy go to solution for them is public cloud.
 
-e.g:-  Developer has IAM access and he created EC2 instance and attached volume to it. Volume has sensitive info so organization need backup of volume. So developer takes snapshots of volume on daily basis (snapshot means backup in AWS). After all work, Dev deletes EC2 but doesn't delete volume attached. So the backup snapshots taken are also not deleted. So AWS keeps charging us for all snapshots and volumes.
+  - e.g:-  Developer has IAM access and he created EC2 instance and attached volume to it (without volume we cannot store data inside EC2).
+  - Volume has sensitive info so organization need backup of volume. So developer takes snapshots of volume on daily basis (snapshot means backup in AWS).
+  - After all work, Dev deletes EC2 as their work is completed but doesn't delete volume attached. So the backup snapshots taken are also not deleted. So AWS keeps charging us for all snapshots and volumes.
 
-e.g:- Dev has created S3 bucket but he is not using the same. He forgets to delete it. AWS will keep charging for the same as long as it is in active state.
+  - e.g:- Dev has created S3 bucket but they are not using the same. He forgets to delete it. AWS will keep charging for the same as long as it is in active state.
 
-- There are almost around 200+ resources on AWS. There might be "STALE Resources" (someone created but forgot to delete). So cloud cost will go high as we're not managing cloud cost efficiently. This is primary role of devops engineer. Devops engineer has to make sure cloud cost should go down by looking at stale resources on platform.
-- DevOps Engineer can do things like below :- send out notifications to concerned team about stale resources or delete it himself if he has admin access.
+
+- There are almost around 200+ resources on AWS. There might be "**STALE Resources**" (someone created but forgot to delete). So cloud cost will go higher than expected as we're not managing cloud cost efficiently.
+- The primary role of Devops engineer is to make sure cloud cost should go down by looking at stale resources on platform.
+- DevOps Engineer can do things like below if any stale resources found :-
+  - Send out notifications to concerned team about stale resources
+  - Delete them on own if admin access is present
+ 
+-------------------------------------------------------------------------------------------------------------------------------------
 
 # How devops engineers can implement cost optimization by deleting stale resources?
 
@@ -16,6 +25,7 @@ e.g:- Dev has created S3 bucket but he is not using the same. He forgets to dele
 - We'll write lambda function for EBS snapshots. Python code we've written will talk to AWS API and it will get all info about EBS snapshot if they are in use or stale and any volume is actually using that snapshot. We can delete the snapshots using same lambda function.
 - As lambda functions are event driven, we can trigger them using cloudwatch.
 
+-------------------------------------------------------------------------------------------------------------------------------------
 
 # Problem statement :- There are some EBS volume snapshots. Dev has created EC2 for which he uses volume (inbuilt). For the volume he has created multiple snapshots (Snapshot is simply copy of the image). Later dev has deleted the EC2 whereas volume and snapshots are not deleted.
 
