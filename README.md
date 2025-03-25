@@ -72,7 +72,7 @@ Solution Implementation
   - Now after sometime, anyone want to delete EC2, volume and snapshot. While deleting instance, volume got deleted but he forgot to delete volume. In such case he will use lambda function
   - Here our EC2 instance has volume attached to it and it takes snapshot
 
-3. Create Lambda Function
+# 3. Create Lambda Function
 -
   - Go to lambda function and create one providing existing permissions. 
 
@@ -99,7 +99,7 @@ Solution Implementation
 - Default execution time for lambda is 3 sec. Its better to keep this minimal as AWS will charge us for parameter.
 
 
-4. Grant Permissions
+# 4. Grant Permissions
 -
   - For one service talking to other service we need an IAM role and required permissions.
   - To give our role a permission, click on Configurations - Permissions - Role in lambda
