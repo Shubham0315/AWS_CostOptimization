@@ -42,24 +42,32 @@ Solution approach Steps :-
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
-# Solution Implementation
+Solution Implementation
+-
+# 1. Create EC2 and attach volume (default)
+-
+  - Create EC2 and create snapshot from volume of that EC2.
+  - While creating EC2, in section "Configure storage" we can see volume is attached by default. So with instance comes the volume. If want to check volume inside EC2, go to “Storage” section.
 
-1. Create EC2 and create snapshot from volume of that EC2. While creating EC2, in section "Configure storage" we can see volume is attached by default. So with instance comes the volume. If want to check volume inside EC2, go to “Storage” section.
+![image](https://github.com/user-attachments/assets/38e948dc-0684-4056-88f5-c090cf505e22)
 
-<img width="562" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/7f64ac58-a4a1-4ed9-a61f-251d78266d2b">
+  - We can also see the volume created in EC2 dashboard
 
-We can also see the volume created in EC2 dashboard
+![image](https://github.com/user-attachments/assets/92bd59b8-20d4-4e50-8d6a-2cca690deb94)
+![image](https://github.com/user-attachments/assets/e526aae1-f566-430c-8af0-684cec892f8e)
 
-<img width="536" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/448e7291-eb5d-406d-a5c1-5de8e12441f0">
+  - If want to check volume inside EC2, go to “Storage” section
 
-If want to check volume inside EC2, go to “Storage” section
-
-<img width="595" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/b450d34d-bf34-470e-b28e-071edb513bb6">
+![image](https://github.com/user-attachments/assets/40483548-4a83-4961-b94b-0a1dc9144efb)
 
 
-2. Go to EC2 Dashboard and create snapshot attahing existing volume to it
+# 2. Create Snapshot
+-
+  - Go to EC2 Dashboard and create snapshot attahing existing volume to it.
+  - Snapshot is image of the volume
 
-<img width="611" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/a9767ea3-bc97-4ee4-8b46-19bcb4aadcb5">
+![image](https://github.com/user-attachments/assets/87633789-4c6f-4fdf-a9e4-6d3de5bb37e6)
+![image](https://github.com/user-attachments/assets/60b7c02f-478a-4a02-ac4f-da9e61baa18e)
 
 *_Now after sometime, anyone want to delete EC2, volume and snapshot. While deleting instance, volume got deleted but he forgot to delete volume. In such case he will use lambda function_*
 
