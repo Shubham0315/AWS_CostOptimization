@@ -141,9 +141,14 @@ Solution Implementation
 ![image](https://github.com/user-attachments/assets/bbc91000-c0b5-4fc5-bf83-e7b5ea2ae54d)
 
 
-5. Now when we test the script, it gets executed but doesn't delete any snapshot.
+# 5. Execute the Lambda Script 
+-
+  - Now when we test the script, it gets executed and delete any snapshot. We can check in EC2 snapshots.
 
-<img width="571" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/a9961beb-e72c-4fff-8bc0-d23526f3d04c">
+![image](https://github.com/user-attachments/assets/33a021ef-7b45-4094-b973-6973950e5eb7)
+![image](https://github.com/user-attachments/assets/8c7f3aaa-05ea-43df-879d-623db071d86e)
+
+-------------------------------------------------------------------------------------------------------------------------------------
 
 - Now we can check when was the snapshot previously used. Lets assume if snapshot is used 30 days ago, delete it. Add this condition to our code and test
 - Now we can configure condition in our code that if snapshot is 30 days old or used, delete it, when we run the test it gets deleted and we get message as as volume assocaited with volume was not found.
