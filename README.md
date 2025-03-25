@@ -157,8 +157,9 @@ Solution Implementation
 - When we test script, in output we get that snapshot associated with EC2 deleted as it was not used for long time.
 - Now we can configure condition in our code that if snapshot is 30 days old or used, delete it, when we run the test it gets deleted and we get message as as volume assocaited with volume was not found.
 
-_*This is how we can manage Cost optimization in our organization as DevOps and cloud engineer*_
 
+This is how we can manage Cost optimization in our organization as DevOps and cloud engineer
+-
 
 <img width="607" alt="image" src="https://github.com/Shubham0315/AWS_CostOptimization/assets/105341138/48d93d44-f524-401c-99a0-8cf7a4adbcc2">
 
